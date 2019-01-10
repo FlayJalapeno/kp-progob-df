@@ -8,6 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2dbdf24c-8c96-48b0-865e-9d24baf0a41b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataframedb.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/groupby.csv" beforeDir="false" afterPath="$PROJECT_DIR$/groupby.csv" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,7 +92,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dataframe/SparseColumn.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -106,11 +110,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -253,6 +257,24 @@
               <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
               <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="dataframe_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -264,7 +286,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547141513822" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547141727437" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../dataframe-PO-" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -364,7 +386,21 @@
       <option name="project" value="LOCAL" />
       <updated>1547141299339</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="czwartek 10.01.19 2">
+      <created>1547141506400</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1547141506400</updated>
+    </task>
+    <task id="LOCAL-00005" summary="czwartek 10.01.19 2">
+      <created>1547141555024</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1547141555024</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -378,6 +414,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17955615" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -396,7 +433,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297587" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32998747" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.32841823" />
+      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32841823" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -412,7 +449,8 @@
     <MESSAGE value="asfasdf" />
     <MESSAGE value="czwartek 10.01.19" />
     <MESSAGE value="czwartek 10.01.19 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="czwartek 10.01.19 1" />
+    <MESSAGE value="czwartek 10.01.19 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="czwartek 10.01.19 2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -650,13 +688,6 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataframe/DFActionsThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -700,6 +731,13 @@
             <element signature="e#121#122#0" expanded="true" />
             <element signature="e#147#148#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
