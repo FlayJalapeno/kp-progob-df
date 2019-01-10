@@ -2,7 +2,7 @@
   <artifact type="jar" name="dataframe:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/dataframe_jar</output-path>
     <root id="archive" name="dataframe.jar">
-      <element id="module-output" name="dataframe" />
+      <element id="module-output" name="progob-df" />
     </root>
   </artifact>
 </component>

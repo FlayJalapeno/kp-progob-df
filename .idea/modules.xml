@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/dataframe.iml" filepath="$PROJECT_DIR$/dataframe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/progob-df.iml" filepath="$PROJECT_DIR$/progob-df.iml" />
     </modules>
   </component>
 </project>

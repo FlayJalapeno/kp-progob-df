@@ -14,82 +14,82 @@ public class VString extends Value implements Cloneable{
     }
 
     @Override
-    public Value add(Value v) throws IncompatibleTypes {
-        throw new IncompatibleTypes();
+    public Value add(Value v) throws IncompatibleType {
+        throw new IncompatibleType();
     }
 
     @Override
-    public Value sub(Value v) throws IncompatibleTypes {
-        throw new IncompatibleTypes();
+    public Value sub(Value v) throws IncompatibleType {
+        throw new IncompatibleType();
     }
 
     @Override
-    public Value mul(Value v) throws IncompatibleTypes {
-        throw new IncompatibleTypes();
+    public Value mul(Value v) throws IncompatibleType {
+        throw new IncompatibleType();
     }
 
     @Override
-    public Value div(Value v) throws IncompatibleTypes {
-        throw new IncompatibleTypes();
+    public Value div(Value v) throws IncompatibleType {
+        throw new IncompatibleType();
     }
 
     @Override
-    public Value pow(Value v) throws IncompatibleTypes {
-        throw new IncompatibleTypes();
+    public Value pow(Value v) throws IncompatibleType {
+        throw new IncompatibleType();
     }
 
     @Override
-    public boolean eq(Value v) throws IncompatibleTypes {
+    public boolean eq(Value v) throws IncompatibleType {
         if(v instanceof VString){
             if(val.compareTo(((VString) v).val)==0) return true;
             else return false;
         }
-        throw new IncompatibleTypes();
+        throw new IncompatibleType();
     }
 
     @Override
-    public boolean gte(Value v) throws IncompatibleTypes {
+    public boolean gte(Value v) throws IncompatibleType {
         if(v instanceof VString){
             if(val.compareTo(((VString) v).val)>=0) return true;
             else return false;
         }
-        throw new IncompatibleTypes();
+        throw new IncompatibleType();
     }
 
     @Override
-    public boolean lte(Value v) throws IncompatibleTypes {
+    public boolean lte(Value v) throws IncompatibleType {
         if(v instanceof VString){
             if(val.compareTo(((VString) v).val)<=0) return true;
             else return false;
         }
-        throw new IncompatibleTypes();
+        throw new IncompatibleType();
     }
 
     @Override
-    public boolean gt(Value v) throws IncompatibleTypes {
+    public boolean gt(Value v) throws IncompatibleType {
         if(v instanceof VString){
             if(val.compareTo(((VString) v).val)>0) return true;
             else return false;
         }
-        throw new IncompatibleTypes();
+        throw new IncompatibleType();
     }
 
     @Override
-    public boolean lt(Value v) throws IncompatibleTypes {
+    public boolean lt(Value v) throws IncompatibleType {
         if(v instanceof VString){
             if(val.compareTo(((VString) v).val)<0) return true;
             else return false;
         }
-        throw new IncompatibleTypes();
+        throw new IncompatibleType();
     }
 
     @Override
-    public boolean neq(Value v) throws IncompatibleTypes {
+    public boolean neq(Value v) throws IncompatibleType {
         if(v instanceof VString){
             if(val.compareTo(((VString) v).val)!=0) return true;
             else return false;
         }
-        throw new IncompatibleTypes();
+        throw new IncompatibleType();
     }
 
     @Override
@@ -117,5 +117,11 @@ public class VString extends Value implements Cloneable{
     @Override
     public Number toNumber() {
         return null;
+    }
+
+    //do tego jebanego konstruktora coovalue w SparseColumn (nie ma dostępu do pola val przy obiekcie Value)\
+    @Override
+    public Object getVal(){
+        return this.val;
     }
 }

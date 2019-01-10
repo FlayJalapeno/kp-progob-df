@@ -2,12 +2,7 @@ package dataframe;
 
 import java.io.IOException;
 import java.util.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DataFrameDB extends DataFrame {
 
@@ -20,8 +15,8 @@ public class DataFrameDB extends DataFrame {
     public DataFrameDB(DataFrame dt){
         super(dt.cnames,dt.ctypes);
         try {
-            Class.forName(DataFrameDB.DRIVER);
-        } catch (ClassNotFoundException e) {
+            Class.forName(DataFrameDB.DRIVER).newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             System.err.println("Brak sterownika JDBC");
             e.printStackTrace();
         }
@@ -37,13 +32,13 @@ public class DataFrameDB extends DataFrame {
         String create = "CREATE TABLE IF NOT EXISTS dataframe (";
         for(int i=0;i<dt.width;i++){
             create += dt.cnames[i] + " ";
-            if(dt.ctypes.get(i) == VInteger.class){
+            if(dt.ctypes.get(i) == VInt.class){
                 create += "INT, ";
             }
             if(dt.ctypes.get(i) == VDouble.class || dt.ctypes.get(i) == VFloat.class){
                 create += "NUMERIC(24,12), ";
             }
-            if(dt.ctypes.get(i) == VDatetime.class){
+            if(dt.ctypes.get(i) == VDateTime.class){
                 create += "DATE, ";
             }else{
                 create += "VARCHAR(255), ";
@@ -55,13 +50,13 @@ public class DataFrameDB extends DataFrame {
         }
         try{
             stat.executeUpdate(create);
-            for(int i=0;i<dt.heigth;i++){
+            for(int i = 0; i<dt.height; i++){
                 String insert = "INSERT INTO dataframe VALUES (";
                 for(int j=0;j<dt.width;j++){
-                    if(dt.ctypes.get(i) == VDouble.class || dt.ctypes.get(i) == VFloat.class || dt.ctypes.get(i) == VInteger.class){
-                        insert = insert + dt.colms[j].col.get(j).toString() + ", ";
+                    if(dt.ctypes.get(i) == VDouble.class || dt.ctypes.get(i) == VFloat.class || dt.ctypes.get(i) == VInt.class){
+                        insert = insert + dt.cols[j].col.get(j).toString() + ", ";
                     }else{
-                        insert = insert + "'" + dt.colms[j].col.get(j).toString() + "', ";
+                        insert = insert + "'" + dt.cols[j].col.get(j).toString() + "', ";
                     }
                     if(i==dt.width-1){
                         insert = create.substring(0,create.length()-2);
@@ -96,21 +91,15 @@ public class DataFrameDB extends DataFrame {
 
     public static void main(String[] args){
         ArrayList<Class<? extends Value>> ct = new ArrayList<>();
-        ct.add(VInteger.class);
+        ct.add(VInt.class);
         ct.add(VString.class);
         ct.add(VDouble.class);
         try {
             DataFrame dt1 = new DataFrame("./data1.csv",ct,true);
             DataFrameDB dtd1 = new DataFrameDB(dt1);
             dtd1.print();
-        } catch (IOException e) {
+        } catch (IOException | InvalidWidth | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IncorrectWidth incorrectWidth) {
-            incorrectWidth.printStackTrace();
         }
     }
 }

@@ -7,11 +7,11 @@ public class Column implements Cloneable{
     public Class<? extends Value> type;
     public List<Value> col;
     public int h;
-    public Column(String nam, Class<? extends Value> typ){
-        type = typ;
-        name = nam;
+    public Column(String nm, Class<? extends Value> tp){
+        type = tp;
+        name = nm;
         col = new ArrayList<>();
-        h= 0;
+        h = 0;
     }
     public void Add(Value val){
         col.add(val);
@@ -31,7 +31,7 @@ public class Column implements Cloneable{
     }
 
     @Override
-    public Object clone() throws CloneNotSupportedException{
+    public Object clone(){
         Column c = new Column(name,type);
         c.col = new ArrayList<>(col);
         c.h = h;

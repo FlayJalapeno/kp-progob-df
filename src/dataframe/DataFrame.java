@@ -1,352 +1,46 @@
 package dataframe;
 
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.*;
 
 public class DataFrame implements Cloneable{
     public String[] cnames;
     public List<Class<? extends Value>> ctypes;
-    public Column[] colms;
+    public Column[] cols;
     public int width;
-    public int heigth;
+    public int height;
 
-    public class GroupedDataFrame implements Groupby{ //klasa przechowująca zgrupowane dataframe'y
-        LinkedList<DataFrame> dataframes;
-        ArrayList<Integer> key_id;
-
-        GroupedDataFrame(){
-            key_id = new ArrayList<>();
-            dataframes = new LinkedList<>();
-        }
-
-        @Override
-        public DataFrame max() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
-                for(int j=0;j<n.width;j++){
-                    if(key_id.contains(j)){
-                        result.Add(n.colms[j].col.get(0),j);
-                    }else{
-                        Value maxv = new VString(); //vstring tylko zeby mi interpreter nie krzyczal
-                        for(int k=0;k<n.colms[j].col.size();k++){
-                            if(k==0)maxv = n.colms[j].col.get(0);
-                            else{
-                                try {
-                                    if(n.colms[j].col.get(k).gt(maxv)) maxv = n.colms[j].col.get(k);
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                        }
-                        result.Add(maxv,j);
-                    }
-                }
-            }
-            return result;
-        }
-
-        @Override
-        public DataFrame min() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
-                for(int j=0;j<n.width;j++){
-                    if(key_id.contains(j)){
-                        result.Add(n.colms[j].col.get(0),j);
-                    }else{
-                        Value minv = new VString(); //tylko zeby mi interpreter nie krzyczal
-                        for(int k=0;k<n.colms[j].col.size();k++){
-                            if(k==0)minv = n.colms[j].col.get(0);
-                            else{
-                                try {
-                                    if(n.colms[j].col.get(k).lt(minv)) minv = n.colms[j].col.get(k);
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                        }
-                        result.Add(minv,j);
-                    }
-                }
-            }
-            return result;
-        }
-
-        @Override
-        public DataFrame mean() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
-                for(int j=0;j<n.width;j++){
-                    if(key_id.contains(j)){
-                        result.Add(n.colms[j].col.get(0),j);
-                    }else{
-                        if(n.colms[j].col.get(0) instanceof VString || n.colms[j].col.get(0) instanceof VDatetime){
-                            result.Add(new VString("NA"),j);
-                        }else{
-                            Value mean = new VDouble(0);
-                            int k;
-                            for(k=0;k<n.colms[j].col.size();k++){
-                                try {
-                                    mean.add(n.colms[j].col.get(k));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                            try {
-                                mean.div(new VDouble(k));
-                            } catch (IncompatibleTypes incompatibleTypes) {
-                                incompatibleTypes.printStackTrace();
-                            } catch (DivByZero divByZero) {
-                                divByZero.printStackTrace();
-                            }
-                            result.Add(mean,j);
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-        @Override
-        public DataFrame std() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
-                for(int j=0;j<n.width;j++){
-                    if(key_id.contains(j)){
-                        result.Add(n.colms[j].col.get(0),j);
-                    }else{
-                        if(n.colms[j].col.get(0) instanceof VString || n.colms[j].col.get(0) instanceof VDatetime){
-                            result.Add(new VString("NA"),j);
-                        }else{
-                            VDouble mean = new VDouble(0);
-                            int k;
-                            for(k=0;k<n.colms[j].col.size();k++){
-                                try {
-                                    mean.add(n.colms[j].col.get(k));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                            try {
-                                mean.div(new VDouble(k));
-                            } catch (DivByZero divByZero) {
-                                divByZero.printStackTrace();
-                            }
-                            VDouble std = new VDouble(0);
-                            for(int l=0;l<n.colms[j].col.size();l++){
-                                VDouble tmp = new VDouble(mean.val);
-                                try {
-                                    tmp.sub(n.colms[j].col.get(l));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                                try {
-                                    std.add(tmp.mul(tmp));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                            try {
-                                std.div(new VDouble(k-1));
-                            } catch (DivByZero divByZero) {
-                                divByZero.printStackTrace();
-                            }
-                            std.val = Math.sqrt(std.val);
-                            result.Add(std,j);
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-        @Override
-        public DataFrame sum() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
-                for(int j=0;j<n.width;j++){
-                    if(key_id.contains(j)){
-                        result.Add(n.colms[j].col.get(0),j);
-                    }else{
-                        if(n.colms[j].col.get(0) instanceof VString || n.colms[j].col.get(0) instanceof VDatetime){
-                            result.Add(new VString("NA"),j);
-                        }else{
-                            Value sum = new VDouble(0);
-                            int k;
-                            for(k=0;k<n.colms[j].col.size();k++){
-                                try {
-                                    sum.add(n.colms[j].col.get(k));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                            result.Add(sum,j);
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-        @Override
-        public DataFrame var() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
-                for(int j=0;j<n.width;j++){
-                    if(key_id.contains(j)){
-                        result.Add(n.colms[j].col.get(0),j);
-                    }else{
-                        if(n.colms[j].col.get(0) instanceof VString || n.colms[j].col.get(0) instanceof VDatetime){
-                            result.Add(new VString("NA"),j);
-                        }else{
-                            VDouble mean = new VDouble(0);
-                            int k;
-                            for(k=0;k<n.colms[j].col.size();k++){
-                                try {
-                                    mean.add(n.colms[j].col.get(k));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                            try {
-                                mean.div(new VDouble(k));
-                            } catch (DivByZero divByZero) {
-                                divByZero.printStackTrace();
-                            }
-                            VDouble var = new VDouble(0);
-                            for(int l=0;l<n.colms[j].col.size();l++){
-                                VDouble tmp = new VDouble(mean.val);
-                                try {
-                                    tmp.sub(n.colms[j].col.get(l));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                                try {
-                                    var.add(tmp.mul(tmp));
-                                } catch (IncompatibleTypes incompatibleTypes) {
-                                    incompatibleTypes.printStackTrace();
-                                }
-                            }
-                            try {
-                                var.div(new VDouble(k-1));
-                            } catch (DivByZero divByZero) {
-                                divByZero.printStackTrace();
-                            }
-                            result.Add(var,j);
-                        }
-                    }
-                }
-            }
-            return result;
-        }
-
-        @Override
-        public DataFrame apply(Applyable a) {
-            return null;
-        }
-
-        public void linkGroupedLists(GroupedDataFrame other){
-            this.dataframes.addAll(other.dataframes);
-            for(int n: other.key_id){
-                if(!key_id.contains(n)){
-                    key_id.add(n);
-                }
-            }
-        }
-    }
-
-    public GroupedDataFrame groupbyS(String colname){
-
-        GroupedDataFrame r = new GroupedDataFrame();
-        int it = 0;
-
-        while(!colms[it].name.equals(colname)) it++;
-        r.key_id.add(it);
-        for(int i=0;i<heigth;i++){
-            if(i==0){
-                DataFrame ndf = this.iloc(i);
-                r.dataframes.add(ndf);
-            }else{
-                boolean DataFrameGroupFound = false;
-                int l = 0;
-                for(DataFrame n: r.dataframes){
-                    try {
-                        if(this.colms[it].col.get(i).eq(n.colms[it].col.get(0))){
-                            DataFrameGroupFound = true;
-                            break;
-                        }
-                    } catch (IncompatibleTypes incompatibleTypes) {
-                        incompatibleTypes.printStackTrace();
-                    }
-                    l++;
-                }
-                if(DataFrameGroupFound){
-                    for(int j=0;j<width;j++){
-                        r.dataframes.get(l).Add(this.colms[j].col.get(i),j);
-                    }
-                }else{
-                    DataFrame ndf = this.iloc(i);
-                    r.dataframes.add(ndf);
-                }
-            }
-        }
-        return r;
-    }
-
-    public GroupedDataFrame groupby(String colnames[]){
-        GroupedDataFrame result = new GroupedDataFrame();
-        for(int i=0;i<colnames.length;i++){
-            if(i == 0){
-                result = this.groupbyS(colnames[0]);
-            }else{
-                GroupedDataFrame prev_res = result;
-                result = new GroupedDataFrame();
-                result.key_id = prev_res.key_id;
-                for(DataFrame n: prev_res.dataframes){
-                    GroupedDataFrame tmp = n.groupbyS(colnames[i]);
-                    result.linkGroupedLists(tmp);
-                }
-            }
-        }
-        return result;
-    }
-
-    public GroupedDataFrame groupby(){
-        GroupedDataFrame r = new GroupedDataFrame();
-        r.dataframes.add(this);
-        return r;
-    }
-
-    public DataFrame(String[] col_names,List<Class<? extends Value>> col_types){
-        cnames = col_names;
-        ctypes = col_types;
-        width = col_names.length;
-        colms = new Column[width];
+    //lab 1 / 2
+    public DataFrame(String[] c_names,List<Class<? extends Value>> c_types){
+        cnames = c_names;
+        ctypes = c_types;
+        width = c_names.length;
+        cols = new Column[width];
         for(int i=0;i<width;i++){
-            colms[i] = new Column(col_names[i], col_types.get(i));
+            cols[i] = new Column(c_names[i], c_types.get(i));
         }
-        heigth = 0;
+        height = 0;
     }
 
-    public DataFrame(String filename, List<Class<? extends Value>> col_types,boolean header) throws IOException, IllegalAccessException, InstantiationException, IncorrectWidth {
-        ctypes = col_types;
-        width = col_types.size();
+    public DataFrame(String filename, List<Class<? extends Value>> c_types,boolean header) throws IOException, IllegalAccessException, InstantiationException, InvalidWidth {
+        ctypes = c_types;
+        width = c_types.size();
         File file = new File(filename);
         BufferedReader br = new BufferedReader(new FileReader(file));
-        String firstl = br.readLine();
-        int real_wdth = 0;
-        for(int i=0;i<firstl.length();i++){
-            if(firstl.charAt(i) == ',')real_wdth++;
+        String firstLine = br.readLine();
+        int realWidth = 0;
+        for(int i=0;i<firstLine.length();i++){
+            if(firstLine.charAt(i) == ',')realWidth++;
         }
-        if(real_wdth+1 != width){
-            throw new IncorrectWidth();
+        if(realWidth+1 != width){
+            throw new InvalidWidth();
         }
 
         br = new BufferedReader(new FileReader(file));
         cnames = new String[width];
         if(!header){
             Scanner reader = new Scanner(System.in);
-            System.out.println("Nazwij kolumny");
+            System.out.println("Podaj nazwy kolumn: ");
             for(int i =0;i<width;i++){
                 cnames[i] = reader.next();
             }
@@ -365,11 +59,11 @@ public class DataFrame implements Cloneable{
                 }
             }
         }
-        colms = new Column[width];
+        cols = new Column[width];
         for(int i=0;i<width;i++){
-            colms[i] = new Column(cnames[i], ctypes.get(i));
+            cols[i] = new Column(cnames[i], ctypes.get(i));
         }
-        heigth =0;
+        height =0;
         String line;
         while((line = br.readLine()) != null){
             int it =0;
@@ -388,20 +82,20 @@ public class DataFrame implements Cloneable{
     }
 
     public void addS(String s,int col_id) throws InstantiationException, IllegalAccessException {
-        colms[col_id].addS(s);
-        heigth = colms[col_id].h;
+        cols[col_id].addS(s);
+        height = cols[col_id].h;
     }
 
     public void  Add(Value val,int col_id){
-        colms[col_id].Add(val);
-        heigth = colms[col_id].h;
+        cols[col_id].Add(val);
+        height = cols[col_id].h;
     }
 
     public int size(){
-        return heigth;
+        return height;
     }
     public Column get(String colname){
-        for(Column n: colms){
+        for(Column n: cols){
             if(n.name == colname){
                 return n;
             }
@@ -412,7 +106,7 @@ public class DataFrame implements Cloneable{
     public DataFrame iloc(int i){
         DataFrame dfr = new DataFrame(cnames,ctypes);
         for(int it=0;it<width;it++){
-            dfr.Add(colms[it].col.get(i),it);
+            dfr.Add(cols[it].col.get(i),it);
         }
         return dfr;
     }
@@ -421,7 +115,7 @@ public class DataFrame implements Cloneable{
         DataFrame dfr = new DataFrame(cnames,ctypes);
         for(int i=from;i<=to;i++){
             for(int it=0;it<width;it++){
-                dfr.Add(colms[it].col.get(i),it);
+                dfr.Add(cols[it].col.get(i),it);
             }
         }
         return dfr;
@@ -430,7 +124,7 @@ public class DataFrame implements Cloneable{
     public DataFrame get(String[] cols,boolean copy) throws CloneNotSupportedException{
         List<Class<? extends Value>> colst = new ArrayList<>();
         int it =0;
-        for(Column n: colms){
+        for(Column n: this.cols){
             if(n.name == cols[it]){
                 colst.add(n.type);
                 it++;
@@ -439,14 +133,14 @@ public class DataFrame implements Cloneable{
         DataFrame dfr = new DataFrame(cols,colst);
         if(copy){
             for(int i=0;i<dfr.width;i++){
-                for(Column n: colms){
-                    if(n.name == dfr.cnames[i]) dfr.colms[i] = (Column)n.clone();
+                for(Column n: this.cols){
+                    if(n.name == dfr.cnames[i]) dfr.cols[i] = (Column)n.clone();
                 }
             }
         }else{
             for(int i=0;i<dfr.width;i++){
-                for(Column n: colms){
-                    dfr.colms[i] = n;
+                for(Column n: this.cols){
+                    dfr.cols[i] = n;
                 }
             }
         }
@@ -456,39 +150,347 @@ public class DataFrame implements Cloneable{
     public void print(){
         for(String n: cnames) System.out.print(n + " ");
         System.out.println();
-        for(int i=0;i<heigth;i++){
+        for(int i = 0; i< height; i++){
             for(int j=0;j<width;j++){
-                System.out.print(colms[j].col.get(i).toString() + " ");
+                System.out.print(cols[j].col.get(i).toString() + " ");
             }
             System.out.println();
         }
         System.out.println();
     }
 
-    public static void main(String[] args){
-        ArrayList<Class<? extends Value>> ct = new ArrayList<>();
+    //lab 4
+    public class GroupedDF implements Groupby{
+        LinkedList<DataFrame> dataframes;
+        ArrayList<Integer> key_id;
+
+        GroupedDF(){
+            key_id = new ArrayList<>();
+            dataframes = new LinkedList<>();
+        }
+
+        @Override
+        public DataFrame max() {
+            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
+            for(DataFrame n: dataframes){
+                for(int i=0;i<n.width;i++){
+                    if(key_id.contains(i)){
+                        result.Add(n.cols[i].col.get(0),i);
+                    }else{
+                        Value maxv = new VString();
+                        for(int k = 0; k<n.cols[i].col.size(); k++){
+                            if(k==0)maxv = n.cols[i].col.get(0);
+                            else{
+                                try {
+                                    if(n.cols[i].col.get(k).gt(maxv)) maxv = n.cols[i].col.get(k);
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                        }
+                        result.Add(maxv,i);
+                    }
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public DataFrame min() {
+            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
+            for(DataFrame n: dataframes){
+                for(int j=0;j<n.width;j++){
+                    if(key_id.contains(j)){
+                        result.Add(n.cols[j].col.get(0),j);
+                    }else{
+                        Value minv = new VString();
+                        for(int k = 0; k<n.cols[j].col.size(); k++){
+                            if(k==0)minv = n.cols[j].col.get(0);
+                            else{
+                                try {
+                                    if(n.cols[j].col.get(k).lt(minv)) minv = n.cols[j].col.get(k);
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                        }
+                        result.Add(minv,j);
+                    }
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public DataFrame mean() {
+            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
+            for(DataFrame n: dataframes){
+                for(int j=0;j<n.width;j++){
+                    if(key_id.contains(j)){
+                        result.Add(n.cols[j].col.get(0),j);
+                    }else{
+                        if(n.cols[j].col.get(0) instanceof VString || n.cols[j].col.get(0) instanceof VDateTime){
+                            result.Add(new VString("NA"),j);
+                        }else{
+                            Value mean = new VDouble(0);
+                            int k;
+                            for(k=0; k<n.cols[j].col.size(); k++){
+                                try {
+                                    mean.add(n.cols[j].col.get(k));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                            try {
+                                mean.div(new VDouble(k));
+                            } catch (IncompatibleType incompatibleType) {
+                                incompatibleType.printStackTrace();
+                            } catch (DivisionByZero divisionByZero) {
+                                divisionByZero.printStackTrace();
+                            }
+                            result.Add(mean,j);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public DataFrame std() {
+            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
+            for(DataFrame n: dataframes){
+                for(int j=0;j<n.width;j++){
+                    if(key_id.contains(j)){
+                        result.Add(n.cols[j].col.get(0),j);
+                    }else{
+                        if(n.cols[j].col.get(0) instanceof VString || n.cols[j].col.get(0) instanceof VDateTime){
+                            result.Add(new VString("NA"),j);
+                        }else{
+                            VDouble mean = new VDouble(0);
+                            int k;
+                            for(k=0; k<n.cols[j].col.size(); k++){
+                                try {
+                                    mean.add(n.cols[j].col.get(k));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                            try {
+                                mean.div(new VDouble(k));
+                            } catch (DivisionByZero divisionByZero) {
+                                divisionByZero.printStackTrace();
+                            }
+                            VDouble std = new VDouble(0);
+                            for(int l = 0; l<n.cols[j].col.size(); l++){
+                                VDouble tmp = new VDouble(mean.val);
+                                try {
+                                    tmp.sub(n.cols[j].col.get(l));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                                try {
+                                    std.add(tmp.mul(tmp));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                            try {
+                                std.div(new VDouble(k-1));
+                            } catch (DivisionByZero divisionByZero) {
+                                divisionByZero.printStackTrace();
+                            }
+                            std.val = Math.sqrt(std.val);
+                            result.Add(std,j);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public DataFrame sum() {
+            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
+            for(DataFrame n: dataframes){
+                for(int j=0;j<n.width;j++){
+                    if(key_id.contains(j)){
+                        result.Add(n.cols[j].col.get(0),j);
+                    }else{
+                        if(n.cols[j].col.get(0) instanceof VString || n.cols[j].col.get(0) instanceof VDateTime){
+                            result.Add(new VString("NA"),j);
+                        }else{
+                            Value sum = new VDouble(0);
+                            int k;
+                            for(k=0; k<n.cols[j].col.size(); k++){
+                                try {
+                                    sum.add(n.cols[j].col.get(k));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                            result.Add(sum,j);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public DataFrame var() {
+            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
+            for(DataFrame n: dataframes){
+                for(int j=0;j<n.width;j++){
+                    if(key_id.contains(j)){
+                        result.Add(n.cols[j].col.get(0),j);
+                    }else{
+                        if(n.cols[j].col.get(0) instanceof VString || n.cols[j].col.get(0) instanceof VDateTime){
+                            result.Add(new VString("NA"),j);
+                        }else{
+                            VDouble mean = new VDouble(0);
+                            int k;
+                            for(k=0; k<n.cols[j].col.size(); k++){
+                                try {
+                                    mean.add(n.cols[j].col.get(k));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                            try {
+                                mean.div(new VDouble(k));
+                            } catch (DivisionByZero divisionByZero) {
+                                divisionByZero.printStackTrace();
+                            }
+                            VDouble var = new VDouble(0);
+                            for(int l = 0; l<n.cols[j].col.size(); l++){
+                                VDouble tmp = new VDouble(mean.val);
+                                try {
+                                    tmp.sub(n.cols[j].col.get(l));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                                try {
+                                    var.add(tmp.mul(tmp));
+                                } catch (IncompatibleType incompatibleType) {
+                                    incompatibleType.printStackTrace();
+                                }
+                            }
+                            try {
+                                var.div(new VDouble(k-1));
+                            } catch (DivisionByZero divisionByZero) {
+                                divisionByZero.printStackTrace();
+                            }
+                            result.Add(var,j);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        @Override
+        public DataFrame apply(Applyable a) {
+            return null;
+        }
+
+        public void linkGroupedLists(GroupedDF other){
+            this.dataframes.addAll(other.dataframes);
+            for(int n: other.key_id){
+                if(!key_id.contains(n)){
+                    key_id.add(n);
+                }
+            }
+        }
+    }
+
+    public GroupedDF groupbyS(String colname){
+
+        GroupedDF r = new GroupedDF();
+        int it = 0;
+
+        while(!cols[it].name.equals(colname)) it++;
+        r.key_id.add(it);
+        for(int i = 0; i< height; i++){
+            if(i==0){
+                DataFrame ndf = this.iloc(i);
+                r.dataframes.add(ndf);
+            }else{
+                boolean DFGroupFound = false;
+                int l = 0;
+                for(DataFrame n: r.dataframes){
+                    try {
+                        if(this.cols[it].col.get(i).eq(n.cols[it].col.get(0))){
+                            DFGroupFound = true;
+                            break;
+                        }
+                    } catch (IncompatibleType incompatibleType) {
+                        incompatibleType.printStackTrace();
+                    }
+                    l++;
+                }
+                if(DFGroupFound){
+                    for(int j=0;j<width;j++){
+                        r.dataframes.get(l).Add(this.cols[j].col.get(i),j);
+                    }
+                }else{
+                    DataFrame ndf = this.iloc(i);
+                    r.dataframes.add(ndf);
+                }
+            }
+        }
+        return r;
+    }
+
+    public GroupedDF groupby(String colnames[]){
+        GroupedDF result = new GroupedDF();
+        for(int i=0;i<colnames.length;i++){
+            if(i == 0){
+                result = this.groupbyS(colnames[0]);
+            }else{
+                GroupedDF prev_res = result;
+                result = new GroupedDF();
+                result.key_id = prev_res.key_id;
+                for(DataFrame n: prev_res.dataframes){
+                    GroupedDF tmp = n.groupbyS(colnames[i]);
+                    result.linkGroupedLists(tmp);
+                }
+            }
+        }
+        return result;
+    }
+
+    public GroupedDF groupby(){
+        GroupedDF r = new GroupedDF();
+        r.dataframes.add(this);
+        return r;
+    }
+
+    //main
+    public static void main(String[] args)  {
+        ArrayList<Class<? extends Value>> types = new ArrayList<>();
         /*
-        ct.add(dataframe.VInteger.class);
-        ct.add(dataframe.VInteger.class);
-        dataframe.SparseDataFrame dfs1 = new dataframe.SparseDataFrame(new String[] {"kol1","kol2"},ct , new dataframe.VInteger(0));
+        ct.add(dataframe.VInt.class);
+        ct.add(dataframe.VInt.class);
+        dataframe.SparseDataFrame dfs1 = new dataframe.SparseDataFrame(new String[] {"kol1","kol2"},ct , new dataframe.VInt(0));
         dfs1.sFilld();
         dataframe.DataFrame df1 = dfs1.toDense();
         df1.print();
         String a[] = {"kol1"};
         df1.groupby(a).max().print();*/
-        //GroupedDataFrame gdf = df1.groupby(a);
+        //GroupedDF gdf = df1.groupby(a);
         //gdf.dataframes.get(0).print();
         //gdf.dataframes.get(1).print();*/
 
-        ct.add(VString.class);
-        ct.add(VDatetime.class);
-        ct.add(VDouble.class);
-        ct.add(VDouble.class);
+        types.add(VString.class);
+        types.add(VDateTime.class);
+        types.add(VDouble.class);
+        types.add(VDouble.class);
         try {
-            DataFrame df1 = new DataFrame("groupby.csv",ct,true);
+            DataFrame df1 = new DataFrame("groupby.csv",types,true);
             DataFrame df2 = df1.iloc(100000);
             df2.groupby(new String[]{"date"}).mean().print();
-        } catch (IllegalAccessException | InstantiationException | IOException | IncorrectWidth e) {
+        } catch (IllegalAccessException | InstantiationException | IOException | InvalidWidth e) {
             e.printStackTrace();
         }
     }

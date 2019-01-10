@@ -1,9 +1,9 @@
 package dataframe;
 
-public class CooValue extends Value{
+public class COOValue extends Value{
     public int pos;
-    public int val;
-    public CooValue(int p,int v){
+    public Value val;
+    public COOValue(int p, Value v){
         pos = p;
         val = v;
     }
@@ -79,12 +79,17 @@ public class CooValue extends Value{
     }
 
     @Override
-    public CooValue create(String s) {
+    public COOValue create(String s) {
         return null;
     }
 
     @Override
     public Number toNumber() {
+        return null;
+    }
+
+    @Override
+    public Object getVal(){
         return null;
     }
 }

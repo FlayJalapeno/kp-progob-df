@@ -1,7 +1,7 @@
 package dataframe;
 
-public class IncompatibleTypes extends RuntimeException {
-    public IncompatibleTypes(){
+public class IncompatibleType extends RuntimeException {
+    public IncompatibleType(){
         super();
     }
 }

@@ -4,12 +4,12 @@ import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class VDatetime extends Value implements Cloneable{
+public class VDateTime extends Value implements Cloneable{
     public Date val;
-    public VDatetime(Date v){
+    public VDateTime(Date v){
         val = v;
     }
-    public VDatetime(){
+    public VDateTime(){
         val = new Date();
     }
 
@@ -40,48 +40,48 @@ public class VDatetime extends Value implements Cloneable{
 
     @Override
     public boolean gt(Value v) throws IncompatibleType {
-        if(v instanceof VDatetime){
-            return val.after(((VDatetime) v).val);
+        if(v instanceof VDateTime){
+            return val.after(((VDateTime) v).val);
         }
         throw new IncompatibleType();
     }
 
     @Override
     public boolean gte(Value v) throws IncompatibleType {
-        if(v instanceof VDatetime){
-            return val.after(((VDatetime) v).val) || val.equals(((VDatetime) v).val);
+        if(v instanceof VDateTime){
+            return val.after(((VDateTime) v).val) || val.equals(((VDateTime) v).val);
         }
         throw new IncompatibleType();
     }
 
     @Override
     public boolean lt(Value v) throws IncompatibleType {
-        if(v instanceof VDatetime){
-            return val.before(((VDatetime) v).val);
+        if(v instanceof VDateTime){
+            return val.before(((VDateTime) v).val);
         }
         throw new IncompatibleType();
     }
 
     @Override
     public boolean lte(Value v) throws IncompatibleType {
-        if(v instanceof VDatetime){
-            return val.before(((VDatetime) v).val) || val.equals(((VDatetime) v).val);
+        if(v instanceof VDateTime){
+            return val.before(((VDateTime) v).val) || val.equals(((VDateTime) v).val);
         }
         throw new IncompatibleType();
     }
 
     @Override
     public boolean eq(Value v) throws IncompatibleType {
-        if(v instanceof VDatetime){
-            return val.equals(((VDatetime) v).val);
+        if(v instanceof VDateTime){
+            return val.equals(((VDateTime) v).val);
         }
         throw new IncompatibleType();
     }
 
     @Override
     public boolean neq(Value v) throws IncompatibleType {
-        if(v instanceof VDatetime){
-            return  !val.equals(((VDatetime) v).val);
+        if(v instanceof VDateTime){
+            return  !val.equals(((VDateTime) v).val);
         }
         throw new IncompatibleType();
     }
@@ -98,7 +98,7 @@ public class VDatetime extends Value implements Cloneable{
     }
 
     @Override
-    public VDatetime create(String s) {
+    public VDateTime create(String s) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date f = null;
         try {
@@ -106,7 +106,7 @@ public class VDatetime extends Value implements Cloneable{
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        VDatetime vr = new VDatetime(f);
+        VDateTime vr = new VDateTime(f);
         return vr;
     }
 
@@ -119,12 +119,18 @@ public class VDatetime extends Value implements Cloneable{
 
     @Override
     public Object clone() throws CloneNotSupportedException{
-        Object cln = new VDatetime(val);
+        Object cln = new VDateTime(val);
         return cln;
     }
 
     @Override
     public Number toNumber() {
         return null;
+    }
+
+    //do tego jebanego konstruktora coovalue w SparseColumn (nie ma dostępu do pola val przy obiekcie Value)\
+    @Override
+    public Object getVal(){
+        return this.val;
     }
 }
