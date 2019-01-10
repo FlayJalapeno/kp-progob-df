@@ -6,30 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2dbdf24c-8c96-48b0-865e-9d24baf0a41b" name="Default Changelist" comment="czwartek 10.01.19">
-      <change afterPath="$PROJECT_DIR$/src/dataframe/DFActionsThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dataframe/IncorrectOperationKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/dataframe_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/dataframe_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2dbdf24c-8c96-48b0-865e-9d24baf0a41b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/COOValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/COOValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/DataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/DataFrameDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/DataFrameDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/DivByZero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/DivisionByZero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/IncompatibleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/IncompatibleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/IncorrectWidth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/InvalidWidth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/SparseColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/SparseColumn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/SparseDataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/SparseDataFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/VDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VDateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/VDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/VFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VFloat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/VInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VInt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/VString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataframe/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/Value.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,13 +63,39 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dataframe/IncorrectOperationKey.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
               <folding>
                 <element signature="e#140#141#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dataframe/DivisionByZero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+              <folding>
+                <element signature="e#102#103#0" expanded="true" />
+                <element signature="e#125#126#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/dataframe/SparseColumn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="e#121#122#0" expanded="true" />
+                <element signature="e#147#148#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -249,22 +253,6 @@
               <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
               <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="dataframe" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -276,7 +264,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547141296185" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547141499016" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../dataframe-PO-" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -362,7 +350,21 @@
       <option name="project" value="LOCAL" />
       <updated>1541697051803</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="czwartek 10.01.19 1">
+      <created>1547141145270</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1547141145270</updated>
+    </task>
+    <task id="LOCAL-00003" summary="czwartek 10.01.19 1">
+      <created>1547141299339</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1547141299339</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -376,9 +378,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17955615" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17955615" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -395,7 +396,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297587" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32998747" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32841823" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32841823" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -410,7 +411,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="asfasdf" />
     <MESSAGE value="czwartek 10.01.19" />
-    <option name="LAST_COMMIT_MESSAGE" value="czwartek 10.01.19" />
+    <MESSAGE value="czwartek 10.01.19 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="czwartek 10.01.19 1" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -533,17 +535,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/SparseColumn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="65" selection-start-line="10" selection-start-column="65" selection-end-line="10" selection-end-column="65" />
-          <folding>
-            <element signature="e#121#122#0" expanded="true" />
-            <element signature="e#147#148#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataframe/Column.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -592,13 +583,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/DivisionByZero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -686,6 +670,35 @@
           <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
           <folding>
             <element signature="e#140#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/DivisionByZero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <folding>
+            <element signature="e#102#103#0" expanded="true" />
+            <element signature="e#125#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/sqlite-jdbc-3.25.2.jar!/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/SparseColumn.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#121#122#0" expanded="true" />
+            <element signature="e#147#148#0" expanded="true" />
           </folding>
         </state>
       </provider>
