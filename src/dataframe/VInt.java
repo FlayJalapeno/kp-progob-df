@@ -13,7 +13,7 @@ public class VInt extends Value implements Cloneable{
     }
 
     @Override
-    public Value add(Value v) throws IncompatibleType {
+    public Value add(Value v) throws InvalidType {
         if(v instanceof VInt){
             val = val + ((VInt) v).val;
             return this;
@@ -26,11 +26,11 @@ public class VInt extends Value implements Cloneable{
             val = val + (int) ((VFloat) v).val;
             return this;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public Value sub(Value v) throws IncompatibleType {
+    public Value sub(Value v) throws InvalidType {
         if(v instanceof VInt){
             val = val - ((VInt) v).val;
             return this;
@@ -43,11 +43,11 @@ public class VInt extends Value implements Cloneable{
             val = val - (int) ((VFloat) v).val;
             return this;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public Value mul(Value v) throws IncompatibleType {
+    public Value mul(Value v) throws InvalidType {
         if(v instanceof VInt){
             val = val * ((VInt) v).val;
             return this;
@@ -60,11 +60,11 @@ public class VInt extends Value implements Cloneable{
             val = val * (int) ((VFloat) v).val;
             return this;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public Value div(Value v) throws DivisionByZero, IncompatibleType {
+    public Value div(Value v) throws DivisionByZero, InvalidType {
         if (v instanceof VInt) {
             if (((VInt) v).val == 0) throw new DivisionByZero();
             val = val / ((VInt) v).val;
@@ -80,13 +80,13 @@ public class VInt extends Value implements Cloneable{
             val = val / (int) ((VFloat) v).val;
             return this;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public Value pow(Value v) throws IncompatibleType {
+    public Value pow(Value v) throws InvalidType {
         if(v instanceof VInt){
-            val = DataFrame.powr(val,((VInt) v).val);
+            val = (int) Math.pow(val,((VInt) v).val);
             return this;
         }
         else if(v instanceof VDouble){
@@ -97,11 +97,11 @@ public class VInt extends Value implements Cloneable{
             val = (int) Math.pow(val,(double) ((VFloat) v).val);
             return this;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean eq(Value v) throws IncompatibleType {
+    public boolean eq(Value v) throws InvalidType {
         if(v instanceof VInt){
             return val == ((VInt) v).val;
         }
@@ -111,11 +111,11 @@ public class VInt extends Value implements Cloneable{
         else if(v instanceof VFloat){
             return val == (int) ((VFloat) v).val;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean gte(Value v) throws IncompatibleType {
+    public boolean gte(Value v) throws InvalidType {
         if(v instanceof VInt){
             return val >= ((VInt) v).val;
         }
@@ -125,11 +125,11 @@ public class VInt extends Value implements Cloneable{
         else if(v instanceof VFloat){
             return val >= (int) ((VFloat) v).val;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean lte(Value v) throws IncompatibleType {
+    public boolean lte(Value v) throws InvalidType {
         if(v instanceof VInt){
             return val <= ((VInt) v).val;
         }
@@ -139,11 +139,11 @@ public class VInt extends Value implements Cloneable{
         else if(v instanceof VFloat){
             return val <= (int) ((VFloat) v).val;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean gt(Value v) throws IncompatibleType {
+    public boolean gt(Value v) throws InvalidType {
         if(v instanceof VInt){
             return val > ((VInt) v).val;
         }
@@ -153,11 +153,11 @@ public class VInt extends Value implements Cloneable{
         else if(v instanceof VFloat){
             return val > (int) ((VFloat) v).val;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean lt(Value v) throws IncompatibleType {
+    public boolean lt(Value v) throws InvalidType {
         if(v instanceof VInt){
             return val < ((VInt) v).val;
         }
@@ -167,11 +167,11 @@ public class VInt extends Value implements Cloneable{
         else if(v instanceof VFloat){
             return val < (int) ((VFloat) v).val;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean neq(Value v) throws IncompatibleType {
+    public boolean neq(Value v) throws InvalidType {
         if(v instanceof VInt){
             return val != ((VInt) v).val;
         }
@@ -181,7 +181,7 @@ public class VInt extends Value implements Cloneable{
         else if(v instanceof VFloat){
             return val != (int) ((VFloat) v).val;
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override

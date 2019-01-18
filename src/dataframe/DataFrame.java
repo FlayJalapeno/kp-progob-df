@@ -1,5 +1,6 @@
 package dataframe;
 
+import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.*;
 
@@ -39,23 +40,23 @@ public class DataFrame implements Cloneable{
         br = new BufferedReader(new FileReader(file));
         cnames = new String[width];
         if(!header){
-            Scanner reader = new Scanner(System.in);
-            System.out.println("Podaj nazwy kolumn: ");
+            Scanner columnReader = new Scanner(System.in);
+            System.out.println("Nazwij kolumny: ");
             for(int i =0;i<width;i++){
-                cnames[i] = reader.next();
+                cnames[i] = columnReader.next();
             }
         }else{
-            String hdr = br.readLine();
-            int it = 0;
+            String head = br.readLine();
+            int actualIt = 0;
             int pos = 0;
-            for(int i=0;i<hdr.length();i++){
-                if(hdr.charAt(i)==','){
-                    cnames[it] = hdr.substring(pos,i);
+            for(int i=0;i<head.length();i++){
+                if(head.charAt(i)==','){
+                    cnames[actualIt] = head.substring(pos,i);
                     pos = i+1;
-                    it++;
+                    actualIt++;
                 }
-                if(i==hdr.length()-1){
-                    cnames[it] = hdr.substring(pos);
+                if(i==head.length()-1){
+                    cnames[actualIt] = head.substring(pos);
                 }
             }
         }
@@ -104,11 +105,11 @@ public class DataFrame implements Cloneable{
     }
 
     public DataFrame iloc(int i){
-        DataFrame dfr = new DataFrame(cnames,ctypes);
+        DataFrame newDF = new DataFrame(cnames,ctypes);
         for(int it=0;it<width;it++){
-            dfr.Add(cols[it].col.get(i),it);
+            newDF.Add(cols[it].col.get(i),it);
         }
-        return dfr;
+        return newDF;
     }
 
     public DataFrame iloc(int from, int to){
@@ -148,11 +149,11 @@ public class DataFrame implements Cloneable{
     }
 
     public void print(){
-        for(String n: cnames) System.out.print(n + " ");
+        for(String n: cnames) System.out.print(n + "\t");
         System.out.println();
         for(int i = 0; i< height; i++){
             for(int j=0;j<width;j++){
-                System.out.print(cols[j].col.get(i).toString() + " ");
+                System.out.print(cols[j].col.get(i).toString() + "\t");
             }
             System.out.println();
         }
@@ -161,18 +162,18 @@ public class DataFrame implements Cloneable{
 
     //lab 4
     public class GroupedDF implements Groupby{
-        LinkedList<DataFrame> dataframes;
+        LinkedList<DataFrame> dfs;
         ArrayList<Integer> key_id;
 
         GroupedDF(){
             key_id = new ArrayList<>();
-            dataframes = new LinkedList<>();
+            dfs = new LinkedList<>();
         }
 
         @Override
         public DataFrame max() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
+            DataFrame result = new DataFrame(dfs.peekFirst().cnames, dfs.peekFirst().ctypes);
+            for(DataFrame n: dfs){
                 for(int i=0;i<n.width;i++){
                     if(key_id.contains(i)){
                         result.Add(n.cols[i].col.get(0),i);
@@ -181,11 +182,7 @@ public class DataFrame implements Cloneable{
                         for(int k = 0; k<n.cols[i].col.size(); k++){
                             if(k==0)maxv = n.cols[i].col.get(0);
                             else{
-                                try {
                                     if(n.cols[i].col.get(k).gt(maxv)) maxv = n.cols[i].col.get(k);
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
                             }
                         }
                         result.Add(maxv,i);
@@ -197,8 +194,8 @@ public class DataFrame implements Cloneable{
 
         @Override
         public DataFrame min() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
+            DataFrame result = new DataFrame(dfs.peekFirst().cnames, dfs.peekFirst().ctypes);
+            for(DataFrame n: dfs){
                 for(int j=0;j<n.width;j++){
                     if(key_id.contains(j)){
                         result.Add(n.cols[j].col.get(0),j);
@@ -207,11 +204,7 @@ public class DataFrame implements Cloneable{
                         for(int k = 0; k<n.cols[j].col.size(); k++){
                             if(k==0)minv = n.cols[j].col.get(0);
                             else{
-                                try {
-                                    if(n.cols[j].col.get(k).lt(minv)) minv = n.cols[j].col.get(k);
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
+                                if(n.cols[j].col.get(k).lt(minv)) minv = n.cols[j].col.get(k);
                             }
                         }
                         result.Add(minv,j);
@@ -223,8 +216,8 @@ public class DataFrame implements Cloneable{
 
         @Override
         public DataFrame mean() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
+            DataFrame result = new DataFrame(dfs.peekFirst().cnames, dfs.peekFirst().ctypes);
+            for(DataFrame n: dfs){
                 for(int j=0;j<n.width;j++){
                     if(key_id.contains(j)){
                         result.Add(n.cols[j].col.get(0),j);
@@ -235,19 +228,9 @@ public class DataFrame implements Cloneable{
                             Value mean = new VDouble(0);
                             int k;
                             for(k=0; k<n.cols[j].col.size(); k++){
-                                try {
                                     mean.add(n.cols[j].col.get(k));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
                             }
-                            try {
-                                mean.div(new VDouble(k));
-                            } catch (IncompatibleType incompatibleType) {
-                                incompatibleType.printStackTrace();
-                            } catch (DivisionByZero divisionByZero) {
-                                divisionByZero.printStackTrace();
-                            }
+                            mean.div(new VDouble(k));
                             result.Add(mean,j);
                         }
                     }
@@ -258,8 +241,8 @@ public class DataFrame implements Cloneable{
 
         @Override
         public DataFrame std() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
+            DataFrame result = new DataFrame(dfs.peekFirst().cnames, dfs.peekFirst().ctypes);
+            for(DataFrame n: dfs){
                 for(int j=0;j<n.width;j++){
                     if(key_id.contains(j)){
                         result.Add(n.cols[j].col.get(0),j);
@@ -270,36 +253,16 @@ public class DataFrame implements Cloneable{
                             VDouble mean = new VDouble(0);
                             int k;
                             for(k=0; k<n.cols[j].col.size(); k++){
-                                try {
                                     mean.add(n.cols[j].col.get(k));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
                             }
-                            try {
-                                mean.div(new VDouble(k));
-                            } catch (DivisionByZero divisionByZero) {
-                                divisionByZero.printStackTrace();
-                            }
+                            mean.div(new VDouble(k));
                             VDouble std = new VDouble(0);
                             for(int l = 0; l<n.cols[j].col.size(); l++){
                                 VDouble tmp = new VDouble(mean.val);
-                                try {
-                                    tmp.sub(n.cols[j].col.get(l));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
-                                try {
-                                    std.add(tmp.mul(tmp));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
+                                tmp.sub(n.cols[j].col.get(l));
+                                std.add(tmp.mul(tmp));
                             }
-                            try {
-                                std.div(new VDouble(k-1));
-                            } catch (DivisionByZero divisionByZero) {
-                                divisionByZero.printStackTrace();
-                            }
+                            std.div(new VDouble(k-1));
                             std.val = Math.sqrt(std.val);
                             result.Add(std,j);
                         }
@@ -311,8 +274,8 @@ public class DataFrame implements Cloneable{
 
         @Override
         public DataFrame sum() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
+            DataFrame result = new DataFrame(dfs.peekFirst().cnames, dfs.peekFirst().ctypes);
+            for(DataFrame n: dfs){
                 for(int j=0;j<n.width;j++){
                     if(key_id.contains(j)){
                         result.Add(n.cols[j].col.get(0),j);
@@ -323,11 +286,7 @@ public class DataFrame implements Cloneable{
                             Value sum = new VDouble(0);
                             int k;
                             for(k=0; k<n.cols[j].col.size(); k++){
-                                try {
-                                    sum.add(n.cols[j].col.get(k));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
+                                sum.add(n.cols[j].col.get(k));
                             }
                             result.Add(sum,j);
                         }
@@ -339,8 +298,8 @@ public class DataFrame implements Cloneable{
 
         @Override
         public DataFrame var() {
-            DataFrame result = new DataFrame(dataframes.peekFirst().cnames,dataframes.peekFirst().ctypes);
-            for(DataFrame n: dataframes){
+            DataFrame result = new DataFrame(dfs.peekFirst().cnames, dfs.peekFirst().ctypes);
+            for(DataFrame n: dfs){
                 for(int j=0;j<n.width;j++){
                     if(key_id.contains(j)){
                         result.Add(n.cols[j].col.get(0),j);
@@ -351,36 +310,16 @@ public class DataFrame implements Cloneable{
                             VDouble mean = new VDouble(0);
                             int k;
                             for(k=0; k<n.cols[j].col.size(); k++){
-                                try {
-                                    mean.add(n.cols[j].col.get(k));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
+                                mean.add(n.cols[j].col.get(k));
                             }
-                            try {
-                                mean.div(new VDouble(k));
-                            } catch (DivisionByZero divisionByZero) {
-                                divisionByZero.printStackTrace();
-                            }
+                            mean.div(new VDouble(k));
                             VDouble var = new VDouble(0);
                             for(int l = 0; l<n.cols[j].col.size(); l++){
                                 VDouble tmp = new VDouble(mean.val);
-                                try {
-                                    tmp.sub(n.cols[j].col.get(l));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
-                                try {
-                                    var.add(tmp.mul(tmp));
-                                } catch (IncompatibleType incompatibleType) {
-                                    incompatibleType.printStackTrace();
-                                }
+                                tmp.sub(n.cols[j].col.get(l));
+                                var.add(tmp.mul(tmp));
                             }
-                            try {
                                 var.div(new VDouble(k-1));
-                            } catch (DivisionByZero divisionByZero) {
-                                divisionByZero.printStackTrace();
-                            }
                             result.Add(var,j);
                         }
                     }
@@ -394,8 +333,22 @@ public class DataFrame implements Cloneable{
             return null;
         }
 
+        public void print(){
+            for(String n: cnames) System.out.print(n + "\t");
+            System.out.println();
+            for(DataFrame d:dfs){
+                for(int i = 0; i< d.height; i++) {
+                    for (int j = 0; j < d.width; j++) {
+                        System.out.print(d.cols[j].col.get(i).toString() + "\t");
+                    }
+                    System.out.println();
+                }
+            }
+            System.out.println();
+        }
+
         public void linkGroupedLists(GroupedDF other){
-            this.dataframes.addAll(other.dataframes);
+            this.dfs.addAll(other.dfs);
             for(int n: other.key_id){
                 if(!key_id.contains(n)){
                     key_id.add(n);
@@ -414,28 +367,24 @@ public class DataFrame implements Cloneable{
         for(int i = 0; i< height; i++){
             if(i==0){
                 DataFrame ndf = this.iloc(i);
-                r.dataframes.add(ndf);
+                r.dfs.add(ndf);
             }else{
-                boolean DFGroupFound = false;
+                boolean groupFound = false;
                 int l = 0;
-                for(DataFrame n: r.dataframes){
-                    try {
+                for(DataFrame n: r.dfs){
                         if(this.cols[it].col.get(i).eq(n.cols[it].col.get(0))){
-                            DFGroupFound = true;
+                            groupFound = true;
                             break;
                         }
-                    } catch (IncompatibleType incompatibleType) {
-                        incompatibleType.printStackTrace();
-                    }
                     l++;
                 }
-                if(DFGroupFound){
+                if(groupFound){
                     for(int j=0;j<width;j++){
-                        r.dataframes.get(l).Add(this.cols[j].col.get(i),j);
+                        r.dfs.get(l).Add(this.cols[j].col.get(i),j);
                     }
                 }else{
                     DataFrame ndf = this.iloc(i);
-                    r.dataframes.add(ndf);
+                    r.dfs.add(ndf);
                 }
             }
         }
@@ -451,7 +400,7 @@ public class DataFrame implements Cloneable{
                 GroupedDF prev_res = result;
                 result = new GroupedDF();
                 result.key_id = prev_res.key_id;
-                for(DataFrame n: prev_res.dataframes){
+                for(DataFrame n: prev_res.dfs){
                     GroupedDF tmp = n.groupbyS(colnames[i]);
                     result.linkGroupedLists(tmp);
                 }
@@ -462,25 +411,13 @@ public class DataFrame implements Cloneable{
 
     public GroupedDF groupby(){
         GroupedDF r = new GroupedDF();
-        r.dataframes.add(this);
+        r.dfs.add(this);
         return r;
     }
 
     //main
     public static void main(String[] args)  {
         ArrayList<Class<? extends Value>> types = new ArrayList<>();
-        /*
-        ct.add(dataframe.VInt.class);
-        ct.add(dataframe.VInt.class);
-        dataframe.SparseDataFrame dfs1 = new dataframe.SparseDataFrame(new String[] {"kol1","kol2"},ct , new dataframe.VInt(0));
-        dfs1.sFilld();
-        dataframe.DataFrame df1 = dfs1.toDense();
-        df1.print();
-        String a[] = {"kol1"};
-        df1.groupby(a).max().print();*/
-        //GroupedDF gdf = df1.groupby(a);
-        //gdf.dataframes.get(0).print();
-        //gdf.dataframes.get(1).print();*/
 
         types.add(VString.class);
         types.add(VDateTime.class);
@@ -488,8 +425,8 @@ public class DataFrame implements Cloneable{
         types.add(VDouble.class);
         try {
             DataFrame df1 = new DataFrame("groupby.csv",types,true);
-            DataFrame df2 = df1.iloc(100000);
-            df2.groupby(new String[]{"date"}).mean().print();
+            GroupedDF df2 = df1.groupby(new String[]{"id"});
+            df2.mean().print();
         } catch (IllegalAccessException | InstantiationException | IOException | InvalidWidth e) {
             e.printStackTrace();
         }

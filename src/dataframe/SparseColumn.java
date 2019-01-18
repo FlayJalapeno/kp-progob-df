@@ -11,8 +11,8 @@ public class SparseColumn extends Column {
                 COOValue a = new COOValue(h, (Value) val.getVal());
                 col.add(a);
             }
-        } catch (IncompatibleType incompatibleType) {
-            incompatibleType.printStackTrace();
+        } catch (InvalidType invalidType) {
+            invalidType.printStackTrace();
         }
         h++;
     }

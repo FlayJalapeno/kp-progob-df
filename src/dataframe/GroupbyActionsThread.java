@@ -2,17 +2,17 @@ package dataframe;
 
 import java.util.*;
 
-public class DFActionsThread implements Runnable {
+public class GroupbyActionsThread implements Runnable {
     private int t;
     private DataFrame df;
     public DataFrame ret;
     private ArrayList<Integer> key_id;
-    public DFActionsThread(int type, DataFrame inputdf, ArrayList<Integer> id) throws IncorrectOperationKey{
-        if(type < 0 || type > 5){
+    public GroupbyActionsThread(int optype, DataFrame inputdf, ArrayList<Integer> id) throws IncorrectOperationKey{
+        if(optype < 0 || optype > 5){
             throw new IncorrectOperationKey();
         }
         else {
-            t = type;
+            t = optype;
             df = inputdf;
             key_id = id;
             ret = null;

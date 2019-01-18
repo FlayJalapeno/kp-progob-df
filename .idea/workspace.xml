@@ -7,11 +7,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2dbdf24c-8c96-48b0-865e-9d24baf0a41b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sqlite_jdbc_3_23_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dataframe/GroupbyThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dataframe/InvalidType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataframedb.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/groupby.csv" beforeDir="false" afterPath="$PROJECT_DIR$/groupby.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/dataframe_jar/dataframe.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/dataframe_jar/dataframe.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/progob-df.iml" beforeDir="false" afterPath="$PROJECT_DIR$/progob-df.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/DFActionsThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/GroupbyActionsThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/DataFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/DataFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/DataFrameDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/DataFrameDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/IncompatibleType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/SparseColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/SparseColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/VDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VDateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/VDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/VFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VFloat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/VInt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VInt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/VString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/VString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataframe/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataframe/Value.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,13 +37,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dataframe/DataFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="281" column="46" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
+            <state relative-caret-position="320">
+              <caret line="428" column="15" selection-start-line="428" selection-start-column="15" selection-end-line="428" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#DataFrame#0;class#DataFrame#0" />
+                <element signature="method#DataFrame#1;class#DataFrame#0" />
                 <element signature="method#addS#0;class#DataFrame#0" />
                 <element signature="method#Add#0;class#DataFrame#0" />
                 <element signature="method#get#0;class#DataFrame#0" />
@@ -36,10 +53,16 @@
                 <element signature="method#iloc#1;class#DataFrame#0" />
                 <element signature="method#get#1;class#DataFrame#0" />
                 <element signature="method#print#0;class#DataFrame#0" />
+                <element signature="method#max#0;class#GroupedDF#0;class#DataFrame#0" />
+                <element signature="method#min#0;class#GroupedDF#0;class#DataFrame#0" />
+                <element signature="method#mean#0;class#GroupedDF#0;class#DataFrame#0" />
+                <element signature="method#std#0;class#GroupedDF#0;class#DataFrame#0" />
+                <element signature="method#sum#0;class#GroupedDF#0;class#DataFrame#0" />
+                <element signature="method#var#0;class#GroupedDF#0;class#DataFrame#0" />
+                <element signature="method#linkGroupedLists#0;class#GroupedDF#0;class#DataFrame#0" />
                 <element signature="method#groupbyS#0;class#DataFrame#0" />
                 <element signature="method#groupby#0;class#DataFrame#0" />
                 <element signature="method#groupby#1;class#DataFrame#0" />
-                <element signature="method#main#0;class#DataFrame#0" />
                 <element signature="method#powr#0;class#DataFrame#0" />
               </folding>
             </state>
@@ -49,81 +72,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/dataframe/DataFrameDB.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+            <state relative-caret-position="1665">
+              <caret line="194" selection-start-line="194" selection-end-line="194" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#DataFrameDB#0;class#DataFrameDB#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataframe/DFActionsThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataframe/IncorrectOperationKey.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-              <folding>
-                <element signature="e#140#141#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataframe/DivisionByZero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-              <folding>
-                <element signature="e#102#103#0" expanded="true" />
-                <element signature="e#125#126#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataframe/SparseColumn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-              <folding>
-                <element signature="e#121#122#0" expanded="true" />
-                <element signature="e#147#148#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/dataframe/IncompatibleType.java">
+        <entry file="file://$PROJECT_DIR$/src/dataframe/GroupbyThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dataframe/GroupbyActionsThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -141,6 +113,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>object</find>
+      <find>try</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,9 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dataframe" />
-        <option value="$PROJECT_DIR$/src/dataframe.java" />
-        <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/asd.java" />
         <option value="$PROJECT_DIR$/src/Integer.java" />
         <option value="$PROJECT_DIR$/src/CooValue.java" />
@@ -182,35 +152,38 @@
         <option value="$PROJECT_DIR$/src/SparseDataFrame.java" />
         <option value="$PROJECT_DIR$/src/DataFrame.java" />
         <option value="$PROJECT_DIR$/src/dataframe/IncompatibleTypes.java" />
-        <option value="$PROJECT_DIR$/src/dataframe/IncompatibleType.java" />
         <option value="$PROJECT_DIR$/src/dataframe/VInteger.java" />
         <option value="$PROJECT_DIR$/src/dataframe/VDatetime.java" />
         <option value="$PROJECT_DIR$/src/dataframe/CooValue.java" />
         <option value="$PROJECT_DIR$/src/dataframe/Value.java" />
         <option value="$PROJECT_DIR$/src/dataframe/VDateTime.java" />
-        <option value="$PROJECT_DIR$/src/dataframe/VDouble.java" />
         <option value="$PROJECT_DIR$/src/dataframe/VFloat.java" />
-        <option value="$PROJECT_DIR$/src/dataframe/VInt.java" />
         <option value="$PROJECT_DIR$/src/dataframe/VString.java" />
         <option value="$PROJECT_DIR$/src/dataframe/SparseColumn.java" />
         <option value="$PROJECT_DIR$/src/dataframe/SparseDataFrame.java" />
         <option value="$PROJECT_DIR$/src/dataframe/COOValue.java" />
         <option value="$PROJECT_DIR$/src/dataframe/Column.java" />
-        <option value="$PROJECT_DIR$/src/dataframe/GroupbyThread.java" />
         <option value="$PROJECT_DIR$/src/dataframe/DFOperations.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/jshell/jshell_console.snippet" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.groovy" />
-        <option value="$PROJECT_DIR$/src/dataframe/DataFrameDB.java" />
         <option value="$PROJECT_DIR$/src/dataframe/DivByZero.java" />
         <option value="$PROJECT_DIR$/src/dataframe/DivisionByZero.java" />
         <option value="$PROJECT_DIR$/src/dataframe/IncorrectWidth.java" />
         <option value="$PROJECT_DIR$/src/dataframe/InvalidWidth.java" />
         <option value="$PROJECT_DIR$/src/dataframe/DFActions.java" />
-        <option value="$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java" />
-        <option value="$PROJECT_DIR$/src/dataframe/DataFrame.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/dataframe/DFActionsThread.java" />
         <option value="$PROJECT_DIR$/src/dataframe/IncorrectOperationKey.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/IncompatibleType.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/IncorrectTypes.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/VDouble.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/DFActionsThread.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/VInt.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/GroupbyThread.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/DFGroupbyActionsThread.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/GroupbyActionsThread.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/DataFrameDB.java" />
+        <option value="$PROJECT_DIR$/src/dataframe/DataFrame.java" />
       </list>
     </option>
   </component>
@@ -221,10 +194,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="131" />
-    <option name="y" value="48" />
-    <option name="width" value="1612" />
-    <option name="height" value="876" />
+    <option name="x" value="833" />
+    <option name="y" value="25" />
+    <option name="width" value="767" />
+    <option name="height" value="875" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -234,6 +207,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="dataframe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -250,35 +249,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KP-progob" type="b2602c69:ProjectViewProjectNode" />
-              <item name="kp-progob-df" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="dataframe_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
     </panes>
   </component>
@@ -286,12 +256,13 @@
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547141727437" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../dataframe-PO-" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547766293989" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sqlite-jdbc-3.23.1.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.21147357" />
-    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.excludes" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -310,7 +281,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DataFrameDB">
+  <component name="RunManager" selected="Application.DataFrame">
     <configuration name="DataFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dataframe.DataFrame" />
       <module name="progob-df" />
@@ -342,15 +313,15 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.DataFrame" />
       <item itemvalue="Application.DataFrameDB" />
+      <item itemvalue="Application.DataFrame" />
       <item itemvalue="Groovy.ide-scripting" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DataFrame" />
         <item itemvalue="Application.DataFrameDB" />
         <item itemvalue="Groovy.ide-scripting" />
-        <item itemvalue="Application.DataFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -400,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1547141555024</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="czwartek 10.01.19 2">
+      <created>1547141754710</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1547141754710</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -414,9 +392,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17955615" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13718897" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -425,15 +402,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32841823" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32841823" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32841823" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3994638" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32955974" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297587" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32998747" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.32841823" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32841823" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -450,7 +427,17 @@
     <MESSAGE value="czwartek 10.01.19" />
     <MESSAGE value="czwartek 10.01.19 1" />
     <MESSAGE value="czwartek 10.01.19 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="czwartek 10.01.19 2" />
+    <MESSAGE value="18.01.2019 w DB do poprawienia min, max, groupby" />
+    <option name="LAST_COMMIT_MESSAGE" value="18.01.2019 w DB do poprawienia min, max, groupby" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
@@ -492,104 +479,7 @@
     <entry file="file://$PROJECT_DIR$/groupby.csv">
       <provider selected="true" editor-type-id="LargeFileEditor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/VString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="619">
-          <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/VInt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="574">
-          <caret line="238" column="5" selection-start-line="238" selection-start-column="5" selection-end-line="238" selection-end-column="5" />
-          <folding>
-            <element signature="e#116#117#0" expanded="true" />
-            <element signature="e#139#140#0" expanded="true" />
-            <element signature="e#215#216#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
-            <element signature="e#5259#5260#0" expanded="true" />
-            <element signature="e#5317#5318#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/VDouble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="238" column="5" selection-start-line="238" selection-start-column="5" selection-end-line="238" selection-end-column="5" />
-          <folding>
-            <element signature="e#6281#6282#0" expanded="true" />
-            <element signature="e#6312#6313#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/VDateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="134" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/Value.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/VFloat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="664">
-          <caret line="237" column="5" selection-start-line="237" selection-start-column="5" selection-end-line="237" selection-end-column="5" />
-          <folding>
-            <element signature="e#6315#6316#0" expanded="true" />
-            <element signature="e#6346#6347#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/SparseDataFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-286">
-          <caret line="25" column="60" selection-start-line="25" selection-start-column="60" selection-end-line="25" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/COOValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="82" column="8" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
-          <folding>
-            <element signature="e#1355#1356#0" expanded="true" />
-            <element signature="e#1382#1383#0" expanded="true" />
-            <element signature="e#1429#1430#0" expanded="true" />
-            <element signature="e#1450#1451#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/Column.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="29" lean-forward="true" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/Applyable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/sqlite-jdbc-3.25.2.jar!/org/sqlite/core/DB.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/sqlite-jdbc-3.25.2.jar!/org/sqlite/core/DB.class" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/jshell/jshell_console.snippet">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -600,23 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/Groupby.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/DataFrameDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="51" column="39" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/dataframe/InvalidWidth.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -624,42 +497,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/IncompatibleType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/DataFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="281" column="46" selection-start-line="281" selection-start-column="46" selection-end-line="281" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#addS#0;class#DataFrame#0" />
-            <element signature="method#Add#0;class#DataFrame#0" />
-            <element signature="method#get#0;class#DataFrame#0" />
-            <element signature="method#iloc#0;class#DataFrame#0" />
-            <element signature="method#iloc#1;class#DataFrame#0" />
-            <element signature="method#get#1;class#DataFrame#0" />
-            <element signature="method#print#0;class#DataFrame#0" />
-            <element signature="method#groupbyS#0;class#DataFrame#0" />
-            <element signature="method#groupby#0;class#DataFrame#0" />
-            <element signature="method#groupby#1;class#DataFrame#0" />
-            <element signature="method#main#0;class#DataFrame#0" />
-            <element signature="method#powr#0;class#DataFrame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     <entry file="file://$PROJECT_DIR$/progob-df.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -670,9 +508,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataframedb.db">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dataframedb.db" />
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -688,23 +524,7 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/DFActionsThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/IncorrectOperationKey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding>
-            <element signature="e#140#141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/sqlite-jdbc-3.25.2.jar!/META-INF/MANIFEST.MF" />
     <entry file="file://$PROJECT_DIR$/src/dataframe/DivisionByZero.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -716,10 +536,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/sqlite-jdbc-3.25.2.jar!/META-INF/MANIFEST.MF">
+    <entry file="file://$PROJECT_DIR$/src/dataframe/InvalidType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="31" lean-forward="true" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="30">
+          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -734,10 +554,173 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/dataframe/DFGroupbyThread.java">
+    <entry file="file://$PROJECT_DIR$/src/dataframe/SparseDataFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/VDouble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="232" column="5" lean-forward="true" selection-start-line="232" selection-start-column="5" selection-end-line="232" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/VDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="103" column="11" selection-start-line="103" selection-start-column="8" selection-end-line="103" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/VString.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/VFloat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="237" column="5" selection-start-line="237" selection-start-column="5" selection-end-line="237" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/Groupby.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/COOValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="659">
+          <caret line="82" column="8" lean-forward="true" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
+          <folding>
+            <element signature="e#1355#1356#0" expanded="true" />
+            <element signature="e#1382#1383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/Applyable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/Column.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/VInt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
+          <folding>
+            <element signature="e#116#117#0" expanded="true" />
+            <element signature="e#139#140#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/IncorrectOperationKey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+          <folding>
+            <element signature="e#117#118#0" expanded="true" />
+            <element signature="e#140#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/zip/ZipFile.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="323" column="31" selection-start-line="323" selection-start-column="31" selection-end-line="323" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/sqlite-jdbc-3.23.1.jar!/org/sqlite/jdbc3/JDBC3Statement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/DataFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="428" column="15" selection-start-line="428" selection-start-column="15" selection-end-line="428" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#DataFrame#0;class#DataFrame#0" />
+            <element signature="method#DataFrame#1;class#DataFrame#0" />
+            <element signature="method#addS#0;class#DataFrame#0" />
+            <element signature="method#Add#0;class#DataFrame#0" />
+            <element signature="method#get#0;class#DataFrame#0" />
+            <element signature="method#iloc#0;class#DataFrame#0" />
+            <element signature="method#iloc#1;class#DataFrame#0" />
+            <element signature="method#get#1;class#DataFrame#0" />
+            <element signature="method#print#0;class#DataFrame#0" />
+            <element signature="method#max#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#min#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#mean#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#std#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#sum#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#var#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#linkGroupedLists#0;class#GroupedDF#0;class#DataFrame#0" />
+            <element signature="method#groupbyS#0;class#DataFrame#0" />
+            <element signature="method#groupby#0;class#DataFrame#0" />
+            <element signature="method#groupby#1;class#DataFrame#0" />
+            <element signature="method#powr#0;class#DataFrame#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/DataFrameDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1665">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#DataFrameDB#0;class#DataFrameDB#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/GroupbyThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dataframe/GroupbyActionsThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -808,7 +791,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.xerial:sqlite-jdbc:3.25.2</last-edited>
+          <last-edited>sqlite-jdbc-3.23.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

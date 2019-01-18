@@ -14,76 +14,76 @@ public class VDateTime extends Value implements Cloneable{
     }
 
     @Override
-    public Value add(Value v) throws IncompatibleType {
-        throw new IncompatibleType();
+    public Value add(Value v) throws InvalidType {
+        throw new InvalidType();
     }
 
     @Override
-    public Value sub(Value v) throws IncompatibleType {
-        throw new IncompatibleType();
+    public Value sub(Value v) throws InvalidType {
+        throw new InvalidType();
     }
 
     @Override
-    public Value mul(Value v) throws IncompatibleType {
-        throw new IncompatibleType();
+    public Value mul(Value v) throws InvalidType {
+        throw new InvalidType();
     }
 
     @Override
-    public Value div(Value v) throws IncompatibleType {
-        throw new IncompatibleType();
+    public Value div(Value v) throws InvalidType {
+        throw new InvalidType();
     }
 
     @Override
-    public Value pow(Value v) throws IncompatibleType {
-        throw new IncompatibleType();
+    public Value pow(Value v) throws InvalidType {
+        throw new InvalidType();
     }
 
     @Override
-    public boolean gt(Value v) throws IncompatibleType {
+    public boolean gt(Value v) throws InvalidType {
         if(v instanceof VDateTime){
             return val.after(((VDateTime) v).val);
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean gte(Value v) throws IncompatibleType {
+    public boolean gte(Value v) throws InvalidType {
         if(v instanceof VDateTime){
             return val.after(((VDateTime) v).val) || val.equals(((VDateTime) v).val);
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean lt(Value v) throws IncompatibleType {
+    public boolean lt(Value v) throws InvalidType {
         if(v instanceof VDateTime){
             return val.before(((VDateTime) v).val);
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean lte(Value v) throws IncompatibleType {
+    public boolean lte(Value v) throws InvalidType {
         if(v instanceof VDateTime){
             return val.before(((VDateTime) v).val) || val.equals(((VDateTime) v).val);
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean eq(Value v) throws IncompatibleType {
+    public boolean eq(Value v) throws InvalidType {
         if(v instanceof VDateTime){
             return val.equals(((VDateTime) v).val);
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
-    public boolean neq(Value v) throws IncompatibleType {
+    public boolean neq(Value v) throws InvalidType {
         if(v instanceof VDateTime){
             return  !val.equals(((VDateTime) v).val);
         }
-        throw new IncompatibleType();
+        throw new InvalidType();
     }
 
     @Override
