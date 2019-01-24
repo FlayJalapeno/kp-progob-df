@@ -425,8 +425,9 @@ public class DataFrame implements Cloneable{
         types.add(VDouble.class);
         try {
             DataFrame df1 = new DataFrame("groupby.csv",types,true);
-            GroupedDF df2 = df1.groupby(new String[]{"id"});
-            df2.mean().print();
+            //DataFrame df2 = df1.iloc(0,1000);
+            GroupedDF df3 = df1.groupby(new String[]{"id"});
+            df3.mean().print();
         } catch (IllegalAccessException | InstantiationException | IOException | InvalidWidth e) {
             e.printStackTrace();
         }
